@@ -1,6 +1,5 @@
 
-🪙 Coin Toss Game
-
+##🪙 Coin Toss Game
 A fun **Flask-based web application** where users can sign up, log in, and test their luck with a **coin toss game** 🎮.
 Every toss is stored in the database so you can track your history and stats.
 
@@ -13,18 +12,6 @@ Every toss is stored in the database so you can track your history and stats.
 ✔️ Fair coin toss with random outcomes (Heads/Tails)
 ✔️ Game history stored in SQLite database
 ✔️ Simple and clean Bootstrap-powered interface
-
----
-
-## 🖼️ Screenshots
-
-> *(Add your screenshots in `/static/screenshots` and link them here)*
-
-**Landing Page**
-![Landing Page](static/screenshots/landing.png)
-
-**Game Screen**
-![Game Screen](static/screenshots/game.png)
 
 ---
 
@@ -75,6 +62,7 @@ Coin Toss Game/
 * 🌍 Deployment on Heroku/Render
 
 ---
+
 
 
 
