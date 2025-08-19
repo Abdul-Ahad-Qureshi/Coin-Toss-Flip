@@ -62,15 +62,3 @@ Coin Toss Game/
 * 🌍 Deployment on Heroku/Render
 
 ---
-
-## 📝 License
-
-This project is licensed under the **MIT License**.
-
----
-
-🔥 Pro Tip: Add a **demo GIF** (screen recording of gameplay) at the top of the README to instantly grab attention.
-
----
-
-Would you like me to **embed a live demo deployment guide (Heroku/Render)** in the README too, so anyone can try your game online without setup?
