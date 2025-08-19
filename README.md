@@ -1,5 +1,5 @@
+# 🪙 Coin Toss Game
 
-##🪙 Coin Toss Game
 A fun **Flask-based web application** where users can sign up, log in, and test their luck with a **coin toss game** 🎮.
 Every toss is stored in the database so you can track your history and stats.
 
@@ -63,6 +63,14 @@ Coin Toss Game/
 
 ---
 
+## 📝 License
 
+This project is licensed under the **MIT License**.
 
+---
 
+🔥 Pro Tip: Add a **demo GIF** (screen recording of gameplay) at the top of the README to instantly grab attention.
+
+---
+
+Would you like me to **embed a live demo deployment guide (Heroku/Render)** in the README too, so anyone can try your game online without setup?
