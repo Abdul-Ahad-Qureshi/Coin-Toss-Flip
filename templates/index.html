@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4">Welcome to Heads & Tails!</h1>
+        <p class="lead">Test your luck with our exciting coin toss game</p>
+        
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('game') }}" class="btn btn-light btn-lg mt-3">Play Now</a>
+        {% else %}
+            <div class="mt-4">
+                <a href="{{ url_for('signup') }}" class="btn btn-light btn-lg me-2">Sign Up</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">Login</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="features-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <div class="feature-icon">
+                    <i class="bi bi-person-plus"></i>
+                </div>
+                <h3>Create Account</h3>
+                <p>Sign up for a free account to start playing and track your game history.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="feature-icon">
+                    <i class="bi bi-coin"></i>
+                </div>
+                <h3>Choose Heads or Tails</h3>
+                <p>Select your prediction for the coin toss outcome.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="feature-icon">
+                    <i class="bi bi-trophy"></i>
+                </div>
+                <h3>Win Prizes</h3>
+                <p>Compete for the highest win percentage and climb the leaderboard.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

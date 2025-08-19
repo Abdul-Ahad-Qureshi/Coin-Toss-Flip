@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="game-card mb-4">
+                <div class="auth-header">
+                    <h3 class="card-title text-center mb-0">Profile Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <div class="profile-avatar mb-3">
+                            <div class="avatar-circle">
+                                <span class="initials">{{ current_user.username[0]|upper }}</span>
+                            </div>
+                        </div>
+                        <h4>{{ current_user.username }}</h4>
+                        <p class="text-muted">{{ current_user.email }}</p>
+                        <p class="text-muted">Member since: {{ current_user.created_at.strftime('%B %d, %Y') }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-card mb-4">
+                <div class="auth-header">
+                    <h3 class="card-title text-center mb-0">Game Stats</h3>
+                </div>
+                <div class="card-body">
+                    <div class="stats-container">
+                        <div class="stat-item text-center">
+                            <div class="stat-number">{{ total_games }}</div>
+                            <div class="stat-label">Total Games</div>
+                        </div>
+                        <div class="stat-item text-center">
+                            <div class="stat-number text-success">{{ wins }}</div>
+                            <div class="stat-label">Wins</div>
+                        </div>
+                        <div class="stat-item text-center">
+                            <div class="stat-number text-danger">{{ losses }}</div>
+                            <div class="stat-label">Losses</div>
+                        </div>
+                    </div>
+                    <div class="win-percentage mt-4">
+                        <h5 class="text-center">Win Percentage</h5>
+                        <div class="progress mt-2" style="height: 25px;">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" 
+                                 role="progressbar" 
+                                 aria-valuenow="{{ win_percentage|default(0)|float }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100">
+                                {{ win_percentage|default(0)|float }}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="game-card">
+                <div class="auth-header">
+                    <h3 class="card-title text-center mb-0">Recent Game History</h3>
+                </div>
+                <div class="card-body">
+                    {% if game_history %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Your Choice</th>
+                                        <th>Result</th>
+                                        <th>Outcome</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for game in game_history %}
+                                        <tr class="history-item">
+                                            <td>{{ game.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                                            <td>
+                                                <span class="badge {% if game.user_choice == 'heads' %}bg-warning{% else %}bg-info{% endif %}">
+                                                    {{ game.user_choice|capitalize }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="badge {% if game.coin_result == 'heads' %}bg-warning{% else %}bg-info{% endif %}">
+                                                    {{ game.coin_result|capitalize }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                {% if game.result == 'Win' %}
+                                                    <span class="badge bg-success">Win</span>
+                                                {% else %}
+                                                    <span class="badge bg-danger">Loss</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="bi bi-clock-history display-4 text-muted"></i>
+                            <p class="mt-3">No game history yet. Play your first game!</p>
+                            <a href="{{ url_for('game') }}" class="btn btn-primary mt-2">
+                                <i class="bi bi-play-circle"></i> Play Game
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

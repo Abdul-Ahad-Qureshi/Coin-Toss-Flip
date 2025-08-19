@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="game-container text-center">
+    <h2 class="mb-4">Coin Toss Game</h2>
+    
+    <div class="game-card mb-5">
+        <div id="coin" class="coin">
+            <div class="coin-side heads">H</div>
+            <div class="coin-side tails">T</div>
+        </div>
+        
+        <form method="POST" class="mt-4">
+            <div class="choice-buttons mb-4">
+                <button type="submit" name="choice" value="heads" class="btn heads-btn choice-btn">
+                    <i class="bi bi-currency-bitcoin"></i> Heads
+                </button>
+                <button type="submit" name="choice" value="tails" class="btn tails-btn choice-btn">
+                    <i class="bi bi-currency-bitcoin"></i> Tails
+                </button>
+            </div>
+        </form>
+        
+        {% if result %}
+            <div class="result-display mt-4">
+                <h3 class="mt-3">
+                    You chose: <span class="fw-bold">{{ user_choice|capitalize }}</span>
+                </h3>
+                <h3>
+                    Result: <span class="fw-bold">{{ coin_result|capitalize }}</span>
+                </h3>
+                <h2 class="mt-3">
+                    {% if result == 'Win' %}
+                        <span class="win-text">You Win!</span>
+                    {% else %}
+                        <span class="lose-text">You Lose!</span>
+                    {% endif %}
+                </h2>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="game-stats">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="stats-card mb-3">
+                    <h5 class="mb-3">How to Play</h5>
+                    <p>Choose Heads or Tails before the coin is tossed.</p>
+                    <p>If your choice matches the coin toss result, you win!</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="stats-card">
+                    <h5 class="mb-3">Game Odds</h5>
+                    <p>Heads: 50% chance</p>
+                    <p>Tails: 50% chance</p>
+                    <p>Fair game with true randomness</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
